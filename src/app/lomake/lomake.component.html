@@ -1,0 +1,19 @@
+<md-card>
+  <form #f='ngForm' id="form1" (submit)="laheta()">
+    <md-input-container>
+      <input mdInput required name="nimi" placeholder="Syötä nimi" [(ngModel)]='nimi' />
+    </md-input-container>
+    <br /> Suosikkisupersankari:
+    <br />
+    <md-radio-group required class="radio-group" [(ngModel)]="supersankari" name="supersankari">
+      <md-radio-button class="radio-button" *ngFor="let v of vaihtoehdot" [id]='v' [value]="v">
+        {{v}}
+      </md-radio-button>
+    </md-radio-group>
+    <br>
+    <button md-raised-button  [disabled]="!f.form.valid">Lähetä</button>
+  </form>
+  <form (submit)='tyhjenna()'>
+    <button md-raised-button>Tyhjennä</button>
+  </form>
+</md-card>
